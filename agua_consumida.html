@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>agua consumida</title>
+    <link rel="stylesheet" href="agua_consumida.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <script src="agua_consumida.js" defer></script>
+</head>
+<body>
+    <!----------------------------------->
+    <!--|estructuracion_agua_consumida|-->
+    <!----------------------------------->
+    <main class="app">
+        <!-- ENCABEZADO: título y descripción -->
+        <header class="encabezado">
+            <h1>Agua Consumida</h1>
+            <p>Lleva la cuenta de los vasos de agua que tomas en el día.</p>
+        </header>
+        <!-- PANEL 1: resumen del consumo -->
+        <section class="panel resumen">
+            <!-- Vasos tomados y meta (JavaScript escribe los números) -->
+            <p class="conteo">
+                <strong id="vasos">0</strong> de <span id="meta">8</span> vasos
+            </p>
+            <!-- Barra de progreso: el ancho de #relleno lo controla JavaScript -->
+            <div class="barra" id="barra" role="progressbar" aria-label="Progreso diario">
+                <div class="relleno" id="relleno"></div>
+            </div>
+            <!-- Porcentaje y litros consumidos -->
+            <div class="datos">
+                <span id="porcentaje">0%</span>
+                <span id="litros">0 L</span>
+            </div>
+            <!-- Mensaje que cambia según el avance -->
+            <p id="mensaje" class="mensaje"></p>
+        </section>
+        <!-- PANEL 2: vasos dibujados (JavaScript los crea) -->
+        <section class="panel">
+            <div id="vasosDibujo" class="vasos-dibujo"></div>
+            <!-- Botones para sumar o quitar un vaso -->
+            <div class="botones">
+                <button id="btnQuitar" class="btn-quitar" type="button">− Quitar</button>
+                <button id="btnAgregar" class="btn-agregar" type="button">+ Tomé un vaso</button>
+            </div>
+        </section>
+        <!-- PANEL 3: ajustes -->
+        <section class="panel">
+            <h2>Ajustes</h2>
+            <div class="fila">
+                <!-- Meta diaria de vasos -->
+                <div class="campo">
+                    <label for="inputMeta">Meta diaria (vasos)</label>
+                    <input type="number" id="inputMeta" min="1" max="20" step="1">
+                </div>
+                <!-- Tamaño de cada vaso en mililitros -->
+                <div class="campo">
+                    <label for="inputMl">Tamaño del vaso (ml)</label>
+                    <input type="number" id="inputMl" min="50" max="1000" step="10">
+                </div>
+            </div>
+            <!-- Botón para empezar un nuevo día -->
+            <button id="btnReiniciar" class="btn-reiniciar" type="button">
+                Empezar nuevo día
+            </button>
+        </section>
+    </main>
+</body>
+</html>

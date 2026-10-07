@@ -1,0 +1,169 @@
+/* ===== VARIABLES DE COLOR (se usan en todo el archivo) ===== */
+:root {
+  --fondo: #eaf3f8;          /* fondo de la página */
+  --panel: #ffffff;          /* fondo de las tarjetas */
+  --texto: #17303f;          /* color principal del texto */
+  --texto-suave: #587384;    /* textos secundarios */
+  --borde: #cfdfe8;          /* color de los bordes */
+  --agua: #1b79b8;           /* azul del agua */
+  --vacio: #d5e4ed;          /* color de un vaso sin llenar */
+  --alerta: #b3401f;         /* rojo anaranjado: reiniciar */
+}
+/* ===== REINICIO BÁSICO ===== */
+* {
+    box-sizing: border-box;    /* el padding no agranda los elementos */
+    margin: 0;
+    padding: 0;
+}
+/* ===== ESTILO GENERAL DE LA PÁGINA ===== */
+body {
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    line-height: 1.5;
+    padding: 24px 16px;
+}
+/* Contenedor central con ancho máximo */
+.app {
+    max-width: 480px;
+    margin: 0 auto;
+}
+/* ===== ENCABEZADO ===== */
+.encabezado {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.encabezado h1 {
+    font-size: 2rem;
+    color: var(--agua);
+}
+.encabezado p {
+    color: var(--texto-suave);
+}
+/* ===== TARJETAS (paneles) ===== */
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+.panel h2 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+/* ===== RESUMEN ===== */
+.conteo {
+    text-align: center;
+    font-size: 1.2rem;
+}
+.conteo strong {
+    font-size: 3rem;
+    color: var(--agua);
+}
+/* Barra de progreso: fondo gris con relleno azul */
+.barra {
+    height: 14px;
+    background: var(--vacio);
+    border-radius: 7px;
+    overflow: hidden;          /* recorta el relleno en las esquinas */
+    margin: 12px 0 8px;
+}
+.relleno {
+    height: 100%;
+    width: 0;                  /* JavaScript cambia este ancho */
+    background: var(--agua);
+    transition: width 0.3s;    /* movimiento suave al cambiar */
+}
+.datos {
+    display: flex;
+    justify-content: space-between;
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+}
+.mensaje {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+/* ===== VASOS DIBUJADOS ===== */
+.vasos-dibujo {
+    display: flex;
+    flex-wrap: wrap;           /* los vasos bajan de línea si no caben */
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+/* Cada vaso: un trapecio hecho con clip-path */
+.vaso {
+    width: 34px;
+    height: 46px;
+    background: var(--vacio);
+    clip-path: polygon(6% 0, 94% 0, 80% 100%, 20% 100%);
+    transition: background 0.2s;
+}
+/* Vaso lleno (clase agregada con JavaScript) */
+.vaso.lleno {
+    background: var(--agua);
+}
+/* ===== BOTONES ===== */
+.botones {
+    display: flex;
+    gap: 10px;
+}
+.btn-agregar,
+.btn-quitar {
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.btn-agregar {
+    flex: 2;                   /* el botón principal es más ancho */
+    background: var(--agua);
+    color: #fff;
+    border: none;
+    font-size: 1.1rem;
+}
+.btn-quitar {
+    flex: 1;
+    background: none;
+    color: var(--agua);
+    border: 1px solid var(--agua);
+}
+.btn-quitar:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+/* ===== AJUSTES ===== */
+.fila {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+.campo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;    /* etiqueta arriba, input abajo */
+    gap: 4px;
+}
+label {
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+}
+input {
+    padding: 10px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
+}
+input:focus {
+    outline: 2px solid var(--agua);
+}
+.btn-reiniciar {
+    background: none;
+    border: none;
+    color: var(--alerta);
+    cursor: pointer;
+}
